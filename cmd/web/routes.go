@@ -2,14 +2,13 @@ package main
 
 import (
 	"github.com/gin-gonic/gin"
-	"net/http"
+	"github.com/valyala/fasthttp"
+	"github.com/valyala/fasthttp/fasthttpadaptor"
 )
 
-func (app *App) routes() http.Handler {
-	route := gin.Default()
+func (app *App) routes() fasthttp.RequestHandler {
+	router := gin.Default()
 
-	route.GET("/", app.Home)
-
-	return route
-
+	router.GET("/", app.Home)
+	return fasthttpadaptor.NewFastHTTPHandler(router)
 }

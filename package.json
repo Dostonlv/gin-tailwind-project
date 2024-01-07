@@ -1,0 +1,17 @@
+{
+  "name": "gin-tailwind-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "vercel": "^31.2.2"
+  },
+  "scripts": {
+    "setup": "yarn vercel login && yarn vercel link",
+    "start": "yarn vercel dev",
+    "dev": "yarn start"
+  }
+}

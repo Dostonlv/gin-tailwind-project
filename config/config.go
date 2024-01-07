@@ -9,7 +9,7 @@ const Version = "1.0.0"
 const CSSVersion = "1"
 
 type Config struct {
-	Port int
+	Port string
 	ENV  string
 	API  string
 	DB   struct {
