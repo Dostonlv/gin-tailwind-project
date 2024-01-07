@@ -15,12 +15,6 @@ import (
 
 type App config.Application
 
-var (
-// addrTLS = flag.String("addrTLS", "", "TCP address to listen to TLS (aka SSL or HTTPS) requests. Leave empty for disabling TLS")
-// certFile = flag.String("certFile", "./localhost.cert", "Path to TLS certificate file")
-// keyFile  = flag.String("keyFile", "./localhost.key", "Path to TLS key file")
-)
-
 func main() {
 	var cfg config.Config
 
@@ -65,7 +59,7 @@ func (app *App) serve() error {
 
 	if app.Config.ENV == "development" {
 		app.InfoLog.Printf("Starting server on port %s\n", app.Config.Port)
-		return srv.ListenAndServeTLS(":"+app.Config.Port, "localhost.crt", "localhost.key")
+		return srv.ListenAndServe(":" + app.Config.Port)
 	}
 
 	app.InfoLog.Printf("Starting HTTPS server in %s mode on port %s\n", app.Config.ENV, app.Config.Port)
