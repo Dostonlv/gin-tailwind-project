@@ -62,7 +62,7 @@ func (app *App) serve() error {
 		return srv.ListenAndServe(":" + app.Config.Port)
 	}
 
-	app.InfoLog.Printf("Starting HTTPS server in %s mode on port %s\n", app.Config.ENV, app.Config.Port)
+	app.InfoLog.Printf("Starting HTTP server in %s mode on port %s\n", app.Config.ENV, app.Config.Port)
 
 	return nil
 
