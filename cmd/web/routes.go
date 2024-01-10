@@ -11,5 +11,6 @@ func (app *App) routes() fasthttp.RequestHandler {
 
 	router.GET("/", app.Home)
 	router.GET("/virtual-terminal", app.VirtualTerminal)
+	router.POST("/payment-succeeded", app.PaymentSucceeded)
 	return fasthttpadaptor.NewFastHTTPHandler(router)
 }
