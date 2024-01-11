@@ -46,3 +46,14 @@ func (app *App) PaymentSucceeded(c *gin.Context) {
 		app.ErrorLog.Println(err)
 	}
 }
+
+func (app *App) ChargeOnce(c *gin.Context) {
+	stringMap := make(map[string]string)
+	stringMap["publishable_key"] = app.Config.Stripe.Key
+	if err := app.renderTemplate(c, "buy-once", &templateData{
+		StringMap: stringMap,
+	}, "stripe-js"); err != nil {
+
+		app.ErrorLog.Println(err)
+	}
+}
