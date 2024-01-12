@@ -1,6 +1,7 @@
 package main
 
 import (
+	"github.com/Dostonlv/gin-tailwind-project/internal/models"
 	"github.com/gin-gonic/gin"
 )
 
@@ -49,9 +50,21 @@ func (app *App) PaymentSucceeded(c *gin.Context) {
 
 func (app *App) ChargeOnce(c *gin.Context) {
 	stringMap := make(map[string]string)
+	widget := models.Widget{
+		ID:             1,
+		Name:           "Custom Widget",
+		Description:    "Very nice widget",
+		InventoryLevel: 10,
+		Price:          1000,
+	}
+
+	data := make(map[string]any)
+	data["widget"] = widget
+
 	stringMap["publishable_key"] = app.Config.Stripe.Key
 	if err := app.renderTemplate(c, "buy-once", &templateData{
 		StringMap: stringMap,
+		Data:      data,
 	}, "stripe-js"); err != nil {
 
 		app.ErrorLog.Println(err)

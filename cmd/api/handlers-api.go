@@ -5,7 +5,7 @@ import (
 	"strconv"
 
 	"github.com/Dostonlv/gin-tailwind-project/internal/cards"
-	"github.com/Dostonlv/gin-tailwind-project/models"
+	"github.com/Dostonlv/gin-tailwind-project/internal/models"
 	"github.com/gin-gonic/gin"
 )
 

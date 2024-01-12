@@ -1,7 +1,7 @@
 package cards
 
 import (
-	"github.com/Dostonlv/gin-tailwind-project/models"
+	"github.com/Dostonlv/gin-tailwind-project/internal/models"
 	"github.com/stripe/stripe-go/v72"
 	"github.com/stripe/stripe-go/v72/paymentintent"
 )
