@@ -20,5 +20,6 @@ func (app *App) routes() fasthttp.RequestHandler {
 	r.Use(cors.New(config))
 
 	r.POST("/api/payment-intent", app.GetPaymentIntent)
+	r.GET("/api/widget/:id", app.GetWidgetByID)
 	return fasthttpadaptor.NewFastHTTPHandler(r)
 }

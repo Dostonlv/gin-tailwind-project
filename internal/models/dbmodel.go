@@ -1,6 +1,10 @@
 package models
 
-import "database/sql"
+import (
+	"context"
+	"database/sql"
+	"time"
+)
 
 type DBModel struct {
 	DB *sql.DB
@@ -24,4 +28,19 @@ type Widget struct {
 	Price          int    `json:"price"`
 	CreatedAt      string `json:"-"`
 	UpdatedAt      string `json:"-"`
+}
+
+func (m *DBModel) GetWidget(id int) (Widget, error) {
+	ctx, cancel := context.WithTimeout(context.Background(), 3*time.Second)
+	defer cancel()
+
+	var widget Widget
+
+	row := m.DB.QueryRowContext(ctx, "select id,name from widgets where id=?", id)
+	err := row.Scan(&widget.ID, &widget.Name)
+
+	if err != nil {
+		return widget, err
+	}
+	return widget, nil
 }

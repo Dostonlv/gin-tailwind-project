@@ -3,6 +3,8 @@ package config
 import (
 	"html/template"
 	"log"
+
+	"github.com/Dostonlv/gin-tailwind-project/internal/models"
 )
 
 const Version = "1.0.0"
@@ -27,4 +29,5 @@ type Application struct {
 	ErrorLog      *log.Logger
 	TemplateCache map[string]*template.Template
 	Version       string
+	DB            models.DBModel
 }

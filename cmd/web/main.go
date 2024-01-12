@@ -2,10 +2,12 @@ package main
 
 import (
 	"flag"
+	"html/template"
+
 	"github.com/Dostonlv/gin-tailwind-project/config"
 	"github.com/Dostonlv/gin-tailwind-project/internal/driver"
+	"github.com/Dostonlv/gin-tailwind-project/internal/models"
 	"github.com/valyala/fasthttp"
-	"html/template"
 
 	"log"
 
@@ -46,6 +48,7 @@ func main() {
 		ErrorLog:      errorLog,
 		TemplateCache: tc,
 		Version:       config.Version,
+		DB:            models.DBModel{DB: conn},
 	}
 
 	err = app.serve()

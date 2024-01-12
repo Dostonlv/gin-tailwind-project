@@ -61,3 +61,26 @@ func (app *App) GetPaymentIntent(c *gin.Context) {
 	}
 
 }
+
+func (app *App) GetWidgetByID(c *gin.Context) {
+	id, err := strconv.Atoi(c.Param("id"))
+	if err != nil {
+		app.ErrorLog.Println(err)
+		return
+	}
+
+	widget, err := app.DB.GetWidget(id)
+	if err != nil {
+		app.ErrorLog.Println(err)
+		return
+	}
+
+	out, err := json.MarshalIndent(widget, "", "    ")
+	if err != nil {
+		app.ErrorLog.Println(err)
+		return
+	}
+
+	c.Header("Content-Type", "application/json")
+	c.Writer.Write(out)
+}
